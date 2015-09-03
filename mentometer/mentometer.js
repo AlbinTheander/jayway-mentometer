@@ -19,52 +19,70 @@ Router.route('/', function(){
 if (Meteor.isClient) {
   // counter starts at 0
   
-yesvotes = function(){
+	yesvotes = function(){
 		return Votes.find({result:"yes"}).count()
 	}
 
-novotes= function(){
+	novotes= function(){
 		return Votes.find({result:"no"}).count()
 	}
 
-Template.Results.helpers({
+	Template.Results.helpers({
 	
 
-	yespercent: function(){
-		return yesvotes()/ (yesvotes() + novotes()) *100
-	},
+		yespercent: function(){
+			return yesvotes()/ (yesvotes() + novotes()) *100
+		},
 
-	nopercent: function(){
-		return novotes() / (yesvotes() + novotes())*100
-	}
-});
-  Template.Voting.events({
-    'click .yes': function () {
-      // increment the counter when button is clicked
-      Votes.insert({
-      	result: "yes",
-      	createdAt: new Date()
-      });
-    },
-    'click .no': function(){
-    	Votes.insert({
-    		result: "no",
-    		createdAt: new Date()
-    	});
-    },
-    'click .reset': function(){
-    	//Nollställ databas
-    	alert('tömmer');
-    	Meteor.call('removeVotes');
-    }
-  });
+		nopercent: function(){
+			return novotes() / (yesvotes() + novotes())*100
+		}
+	});
+	
+  	Template.Voting.events({
+    	'click .yes': function () {
+      		// increment the counter when button is clicked
+      		Votes.insert({
+      			result: "yes",
+      			createdAt: new Date()
+      		});
+    	},
+    	
+    	'click .no': function(){
+    		Votes.insert({
+    			result: "no",
+    			createdAt: new Date()
+    		});
+    	},
+    	
+    	'click .reset': function(){
+    		//Nollställ databas
+    		alert('tömmer');
+    		Meteor.call('removeVotes');
+    	}
+  	});
   
-  Template.PollsT.helpers({
+  	Template.PollsT.helpers({
 
 		polls: function(){
 			return Polls.find({});
 		}
 	});
+	
+	Template.PollsT.events({
+		'submit .newPoll': function(event){
+			event.preventDefault();
+ 
+      		// Get value from form element
+      		var text = event.target.pollQuestion.value;
+ 
+      		// Insert a task into the collection
+      		Meteor.call("addPoll", text);
+ 
+      		// Clear form
+      		event.target.pollQuestion.value = "";
+		}
+	}); 
 }
 
 
