@@ -13,11 +13,18 @@ Router.route('/results', function(){
 
 if (Meteor.isClient) {
   // counter starts at 0
-Template.Results.helpers({
-results: function(){
-return Votes.find({result:"yes"}).count()
 
+Template.Results.helpers({
+
+yesvotes: function(){
+
+return Votes.find({result:"yes"}).count()
+},
+
+novotes: function(){
+return Votes.find({result:"no"}).count()
 }
+
 });
   Template.Voting.events({
     'click .yes': function () {
