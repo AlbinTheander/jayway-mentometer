@@ -1,5 +1,6 @@
 Votes = new Mongo.Collection("votes");
 
+Polls = new Mongo.Collection("polls");
 
 
 Router.route('/voting', function(){
@@ -11,7 +12,7 @@ Router.route('/results', function(){
 });
 
 Router.route('/', function(){
-
+	this.render('PollsT');
 });
 
 
@@ -51,7 +52,14 @@ return Votes.find({result:"no"}).count()
     }
   });
   
+  Template.PollsT.helpers({
+
+		polls: function(){
+			return Polls.find({});
+		}
+	});
 }
+
 
 
 if (Meteor.isServer) {

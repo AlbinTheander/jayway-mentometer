@@ -1,0 +1,15 @@
+<template name="PollsT">
+	<h1>Pågående omröstningar</h1>
+	<ul>
+		{{#each polls}}
+			{{> poll}}
+		{{/each}}
+	</ul>
+			
+</template>
+
+<template name="poll">
+	<li>{{title}} <a href="/voting">Rösta</a> <a href="/results">Se resultat</a></li>
+	
+</template>
+
