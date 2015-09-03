@@ -10,6 +10,10 @@ Router.route('/results', function(){
 	this.render('Results');
 });
 
+Router.route('/', function(){
+
+});
+
 
 if (Meteor.isClient) {
   // counter starts at 0
