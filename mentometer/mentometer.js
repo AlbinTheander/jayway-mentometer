@@ -22,6 +22,11 @@ if (Meteor.isClient) {
     		result: "no",
     		createdAt: new Date()
     	});
+    },
+    'click .reset': function(){
+    	//Nollställ databas
+    	alert('tömmer');
+    	Meteor.call('removeVotes');
     }
   });
 }
