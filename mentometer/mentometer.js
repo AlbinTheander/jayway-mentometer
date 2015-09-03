@@ -16,7 +16,12 @@ if (Meteor.isClient) {
       	result: "yes",
       	createdAt: new Date()
       });
-      alert('Du röstade ja!');
+    },
+    'click .no': function(){
+    	Votes.insert({
+    		result: "no",
+    		createdAt: new Date()
+    	});
     }
   });
 }
