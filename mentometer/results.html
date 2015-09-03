@@ -6,11 +6,21 @@
 
 <h1> Results </h1>
 
-<h2> YES: {{yesvotes}} </h2>
-<h2> NO: {{novotes}} </h2>
+<h2> YES: {{yespercent}} </h2>
+<h2> NO: {{nopercent}} </h2>
 
 
+<div class="progress">
+        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: {{yespercent}}%"><span class="sr-only">40% Complete (success)</span></div>
+		      
+      </div>
+ 
+ <div class="progress">
+		      
+   		<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: {{nopercent}}%"><span class="sr-only">40% Complete (success)</span></div>
 
+       </div>  
+     
 </body>
 
 

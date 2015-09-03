@@ -17,18 +17,25 @@ Router.route('/', function(){
 
 if (Meteor.isClient) {
   // counter starts at 0
+  
+yesvotes = function(){
+		return Votes.find({result:"yes"}).count()
+	}
+
+novotes= function(){
+		return Votes.find({result:"no"}).count()
+	}
 
 Template.Results.helpers({
+	
 
-yesvotes: function(){
+	yespercent: function(){
+		return yesvotes()/ (yesvotes() + novotes()) *100
+	},
 
-return Votes.find({result:"yes"}).count()
-},
-
-novotes: function(){
-return Votes.find({result:"no"}).count()
-}
-
+	nopercent: function(){
+		return novotes() / (yesvotes() + novotes())*100
+	}
 });
   Template.Voting.events({
     'click .yes': function () {
