@@ -42,6 +42,7 @@ if (Meteor.isClient) {
   	Template.Voting.events({
     	'click .yes': function () {
       		// increment the counter when button is clicked
+      		
       		Votes.insert({
       			result: "yes",
       			createdAt: new Date()
