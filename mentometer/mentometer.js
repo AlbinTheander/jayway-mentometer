@@ -31,11 +31,11 @@ if (Meteor.isClient) {
 	
 
 		yespercent: function(){
-			return yesvotes()/ (yesvotes() + novotes()) *100
+			return Math.ceil((yesvotes()/ (yesvotes() + novotes()) *100)) - 0.5
 		},
 
 		nopercent: function(){
-			return novotes() / (yesvotes() + novotes())*100
+			return Math.ceil((novotes() / (yesvotes() + novotes())*100)) - 0.5
 		}
 	});
 	

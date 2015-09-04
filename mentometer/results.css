@@ -1,4 +1,17 @@
 /* CSS declarations go here */
+body {
+	margin: 30px;
+}
+
+
 h1 {
     text-align: center;
+    padding-bottom: 80px;
+    font-size: 60px;
 }
+
+h2 {
+    text-align: center;
+    padding-top: 20px;
+}
+
